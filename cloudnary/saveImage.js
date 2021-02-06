@@ -1,10 +1,10 @@
 const { uplaoder } = require("cloudinary");
 
-if (!req.file.buffer) {
-  res.send("Uploade Image");
-}
-
 const saveImage = (req, res, next) => {
+  if (!req.file.buffer) {
+    res.send("Uploade Image");
+  }
+
   uplaoder
     .update(
       `data:${req.file.mimetype};base64,` + req.file.buffer.toString("base64")
