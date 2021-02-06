@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 const uniqid = require("uniqid");
 
 const UserSchema = new Schema(
@@ -18,3 +18,7 @@ const UserSchema = new Schema(
   },
   { timestamps: true }
 );
+
+const User = model("USER", UserSchema);
+
+module.exports.User = User;
