@@ -1,16 +1,16 @@
-const { uplaoder } = require("cloudinary");
+const { uploader } = require("cloudinary");
 
 const saveImage = (req, res, next) => {
-  if (!req.file.buffer) {
-    res.send("Uploade Image");
+  if (!req.file) {
+    res.send(" please Uploade Image");
   }
 
-  uplaoder
-    .update(
+  uploader
+    .upload(
       `data:${req.file.mimetype};base64,` + req.file.buffer.toString("base64")
     )
     .then((data) => {
-      req.body.imageurl = data.url;
+      req.body.imageUrl = data.url;
       next();
     })
     .catch((e) => {
@@ -18,3 +18,5 @@ const saveImage = (req, res, next) => {
       return e;
     });
 };
+
+module.exports.saveImage = saveImage;

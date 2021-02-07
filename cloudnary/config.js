@@ -1,3 +1,4 @@
+const { v2 } = require("cloudinary");
 const cloudinary = require("cloudinary").v2;
 
 cloudinaryConfig = async (req, res, next) => {
